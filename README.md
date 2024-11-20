@@ -80,3 +80,34 @@ Rituel                      | 9.0|
 Duvel Tripel Hop            | 9.5|
 La Chouffe Grand Cru        |10.0|
 ```
+
+
+# le trigger 
+après l'exécution de la requête suivante pour vérifier que l'ABV (taux d'alcool) est compris entre 0 et 20 avant l'ajout de chaque bière. : 
+```
+CREATE OR REPLACE FUNCTION check_abv()
+RETURNS TRIGGER AS $$ -- Indique que cette fonction est un trigger
+BEGIN
+    IF NEW.abv < 0 OR NEW.abv > 20 THEN
+        RAISE EXCEPTION 'ABV must be between 0 and 20';
+    END IF;
+    RETURN NEW; -- On retourne la nouvelle ligne, elle est valide
+END;
+$$ LANGUAGE plpgsql; -- Utilisation du langage PL/pgSQL
+
+CREATE TRIGGER check_abv
+BEFORE INSERT OR UPDATE ON Beers
+FOR EACH ROW
+EXECUTE FUNCTION check_abv();
+
+```
+puis l'ajout de la bière suivante par exemple : 
+```
+INSERT INTO Beers (name, description, abv, category_id, brewery_id)
+VALUES 
+('bière de taré', 'hytidine coma guaranteed, perfect for forgetting.', 30, 14, 10);
+```
+on obtient le message d'erreur suivant : 
+```
+ERROR:  ABV must be between 0 and 20 
+```

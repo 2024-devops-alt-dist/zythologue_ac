@@ -27,6 +27,128 @@ CREATE TABLE Beers (
     CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 );
 
+-- AJOUTER UN NOUVEL ATTRIBUT POUR LA TABLE BEERS : RATING (INT)
+ALTER TABLE Beers
+ADD COLUMN rating INT CHECK (rating >= 0 AND rating <= 5);
+
+-- AJOUTER DES RATINGS POUR LES BIÈRES EXISTANTES
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 21;
+
+UPDATE Beers
+SET rating = 3
+WHERE beer_id = 22;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 23;
+
+UPDATE Beers
+SET rating = 2
+WHERE beer_id = 24;
+
+UPDATE Beers
+SET rating = 1
+WHERE beer_id = 25;
+
+UPDATE Beers
+SET rating = 4
+WHERE beer_id = 26;
+
+UPDATE Beers
+SET rating = 3
+WHERE beer_id = 27;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 28;
+
+UPDATE Beers
+SET rating = 2
+WHERE beer_id = 29;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 30;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 31;
+
+UPDATE Beers
+SET rating = 3
+WHERE beer_id = 32;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 33;
+
+UPDATE Beers
+SET rating = 2
+WHERE beer_id = 34;
+
+UPDATE Beers
+SET rating = 1
+WHERE beer_id = 35;
+
+UPDATE Beers
+SET rating = 4
+WHERE beer_id = 36;
+
+UPDATE Beers
+SET rating = 3
+WHERE beer_id = 37;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 38;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 39;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 40;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 41;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 42;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 43;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 44;
+
+UPDATE Beers
+SET rating = 1
+WHERE beer_id = 45;
+
+UPDATE Beers
+SET rating = 4
+WHERE beer_id = 46;
+
+UPDATE Beers
+SET rating = 3
+WHERE beer_id = 47;
+
+UPDATE Beers
+SET rating = 5
+WHERE beer_id = 48;
+
+UPDATE Beers
+SET rating = 2
+WHERE beer_id = 49;
+
+
 CREATE TABLE Beer_Ingredients (
     beer_id INT NOT NULL,
     ingredient_id INT NOT NULL,

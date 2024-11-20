@@ -48,5 +48,20 @@ JOIN Breweries ON Beers.brewery_id = Breweries.brewery_id
 GROUP BY Breweries.name
 HAVING COUNT(Beers.brewery_id) > 5;
 
+-- Lister les bières qui n'ont pas encore été ajoutées aux favoris par aucun utilisateur.
+select beers.name as "name"
+from beers 
+left join favorites on beers.beer_id = favorites.beer_id 
+where favorites.user_id is null; 
+
+--Trouver les bières favorites communes entre deux utilisateurs.
+SELECT 
+    beers.name AS "Beer Name",
+    STRING_AGG(users.first_name, ', ') AS "Users"
+FROM Beers
+JOIN Favorites ON Beers.beer_id = Favorites.beer_id
+JOIN Users ON Favorites.user_id = Users.user_id
+GROUP BY beers.name
+HAVING COUNT(users.user_id) > 1;
 
 

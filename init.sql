@@ -172,6 +172,24 @@ VALUES
 ('Chimay Red', 'A fruity and copper-colored Trappist beer.', 7.0, 10, 8),
 ('Duvel Tripel Hop', 'A hoppier version of the classic Duvel.', 9.5, 14, 9);
 
+-- Ajout de bières pour la brasserie 1 (La Chouffe)
+INSERT INTO Beers (name, description, abv, category_id, brewery_id)
+VALUES 
+('La Chouffe Blonde', 'A strong, spicy and fruity blonde beer.', 8.0, 6, 1),
+('La Chouffe Houblon', 'A strong IPA with a Chouffe twist.', 9.0, 6, 1),
+('La Chouffe Soleil', 'A refreshing Belgian blonde ale.', 6.2, 6, 1),
+('La Chouffe Cherry', 'A fruity beer with a hint of cherry.', 5.5, 6, 1),
+('La Chouffe Grand Cru', 'A strong and fruity amber beer.', 10.0, 6, 1);
+
+-- Ajout de bières pour la brasserie 2 (Guinness)
+INSERT INTO Beers (name, description, abv, category_id, brewery_id)
+VALUES
+('Guinness Original', 'A classic Irish stout with roasted malt flavors.', 4.2, 3, 2),
+('Guinness Nitro IPA', 'A smooth, nitrogen-infused IPA with fruity hops.', 6.0, 3, 2),
+('Guinness Nitro Coffee', 'A creamy stout infused with coffee flavors.', 6.5, 3, 2),
+('Guinness Red Ale', 'A balanced and malty red ale.', 5.0, 3, 2),
+('Guinness Nitro Stout', 'A rich, creamy stout with chocolate undertones.', 4.8, 3, 2);
+
 
 --  "La Chouffe Blonde"
 INSERT INTO Beer_Ingredients (beer_id, ingredient_id, percentage)

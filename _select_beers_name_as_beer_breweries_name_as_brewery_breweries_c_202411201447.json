@@ -1,0 +1,98 @@
+{
+"select beers.name as \"beer\", breweries.name as \"brewery\", breweries.country as \"country\" \r\nfrom beers \r\njoin breweries on beers.brewery_id = breweries.brewery_id \r\norder by breweries.country": [
+	{
+		"beer" : "Rituel",
+		"brewery" : "Leffe",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "Stella Artois",
+		"brewery" : "Stella Artois",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "Chimay Blue",
+		"brewery" : "Chimay",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "Duvel",
+		"brewery" : "Duvel",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "Leffe Blond",
+		"brewery" : "Leffe",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "La Chouffe Houblon",
+		"brewery" : "La Chouffe",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "Chimay Red",
+		"brewery" : "Chimay",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "Duvel Tripel Hop",
+		"brewery" : "Duvel",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "La Chouffe Blonde",
+		"brewery" : "La Chouffe",
+		"country" : "Belgium"
+	},
+	{
+		"beer" : "Pilsner Urquell",
+		"brewery" : "Pilsner Urquell",
+		"country" : "Czech Republic"
+	},
+	{
+		"beer" : "Pilsner Urquell Dark",
+		"brewery" : "Pilsner Urquell",
+		"country" : "Czech Republic"
+	},
+	{
+		"beer" : "Carlsberg Elephant",
+		"brewery" : "Carlsberg",
+		"country" : "Denmark"
+	},
+	{
+		"beer" : "Carlsberg Pilsner",
+		"brewery" : "Carlsberg",
+		"country" : "Denmark"
+	},
+	{
+		"beer" : "Guinness Draught",
+		"brewery" : "Guinness",
+		"country" : "Ireland"
+	},
+	{
+		"beer" : "Guinness Foreign Extra Stout",
+		"brewery" : "Guinness",
+		"country" : "Ireland"
+	},
+	{
+		"beer" : "Heineken Silver",
+		"brewery" : "Heineken",
+		"country" : "Netherlands"
+	},
+	{
+		"beer" : "Heineken Lager",
+		"brewery" : "Heineken",
+		"country" : "Netherlands"
+	},
+	{
+		"beer" : "Budweiser",
+		"brewery" : "Budweiser",
+		"country" : "USA"
+	},
+	{
+		"beer" : "Bud Light",
+		"brewery" : "Budweiser",
+		"country" : "USA"
+	}
+]}

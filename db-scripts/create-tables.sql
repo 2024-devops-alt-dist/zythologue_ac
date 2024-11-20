@@ -20,7 +20,6 @@ CREATE TABLE Beers (
     name VARCHAR(50) NOT NULL,
     description TEXT,
     abv FLOAT(2) NOT NULL,
-    created_at DATE DEFAULT CURRENT_DATE,
     brewery_id INT NOT NULL,
     category_id INT NOT NULL,
     CONSTRAINT fk_brewery_id FOREIGN KEY (brewery_id) REFERENCES Breweries(brewery_id),
@@ -63,7 +62,6 @@ CREATE TABLE Reviews (
     beer_id INT NOT NULL,
     rating INT NOT NULL CHECK (rating >= 0 AND rating <= 5),
     comment TEXT,
-    created_at DATE DEFAULT CURRENT_DATE,
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES Users(user_id),
     CONSTRAINT fk_beer_id FOREIGN KEY (beer_id) REFERENCES Beers(beer_id)
 );
@@ -73,7 +71,6 @@ CREATE TABLE Pictures (
     beer_id INT NOT NULL,                  
     user_id INT NOT NULL,                
     url VARCHAR(255) NOT NULL,            
-    created_at DATE DEFAULT CURRENT_DATE, 
     CONSTRAINT fk_beer_id FOREIGN KEY (beer_id) REFERENCES Beers(beer_id),  
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES Users(user_id) 
 );

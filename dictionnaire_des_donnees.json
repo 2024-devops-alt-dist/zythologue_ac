@@ -1,0 +1,211 @@
+{
+    "Users": {
+      "description": "Stocke les informations des utilisateurs.",
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "INT",
+          "description": "Identifiant unique de l'utilisateur",
+          "constraints": ["PRIMARY KEY", "SERIAL"]
+        },
+        {
+          "name": "first_name",
+          "type": "VARCHAR(50)",
+          "description": "Prénom de l'utilisateur",
+          "constraints": ["NOT NULL"]
+        },
+        {
+          "name": "last_name",
+          "type": "VARCHAR(50)",
+          "description": "Nom de famille de l'utilisateur",
+          "constraints": ["NOT NULL"]
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(50)",
+          "description": "Adresse e-mail unique de l'utilisateur",
+          "constraints": ["NOT NULL", "UNIQUE"]
+        },
+        {
+          "name": "password",
+          "type": "VARCHAR(12)",
+          "description": "Mot de passe de l'utilisateur (hashé)",
+          "constraints": ["NOT NULL"]
+        }
+      ]
+    },
+    "Beers": {
+      "description": "Contient les détails de chaque bière.",
+      "attributes": [
+        {
+          "name": "beer_id",
+          "type": "INT",
+          "description": "Identifiant unique de la bière",
+          "constraints": ["PRIMARY KEY", "SERIAL"]
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)",
+          "description": "Nom de la bière",
+          "constraints": ["NOT NULL"]
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "description": "Description de la bière",
+          "constraints": []
+        },
+        {
+          "name": "abv",
+          "type": "FLOAT",
+          "description": "Taux d'alcool de la bière (ABV)",
+          "constraints": ["CHECK (abv >= 0 AND abv <= 20)"]
+        },
+        {
+          "name": "category_id",
+          "type": "INT",
+          "description": "Identifiant de la catégorie",
+          "constraints": ["FOREIGN KEY REFERENCES categories(category_id)"]
+        },
+        {
+          "name": "brewery_id",
+          "type": "INT",
+          "description": "Identifiant de la brasserie",
+          "constraints": ["FOREIGN KEY REFERENCES breweries(brewery_id)"]
+        }
+      ]
+    },
+    "Categories": {
+      "description": "Classifie les bières en différentes catégories.",
+      "attributes": [
+        {
+          "name": "category_id",
+          "type": "INT",
+          "description": "Identifiant unique de la catégorie",
+          "constraints": ["PRIMARY KEY", "SERIAL"]
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)",
+          "description": "Nom de la catégorie (IPA, Lager, Stout, etc.)",
+          "constraints": ["NOT NULL", "UNIQUE"]
+        }
+      ]
+    },
+    "Breweries": {
+      "description": "Répertorie les informations sur les brasseries.",
+      "attributes": [
+        {
+          "name": "brewery_id",
+          "type": "INT",
+          "description": "Identifiant unique de la brasserie",
+          "constraints": ["PRIMARY KEY", "SERIAL"]
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)",
+          "description": "Nom de la brasserie",
+          "constraints": ["NOT NULL", "UNIQUE"]
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR(50)",
+          "description": "Pays d'origine de la brasserie",
+          "constraints": ["NOT NULL"]
+        },
+        {
+          "name": "created_at",
+          "type": "DATE",
+          "description": "Date de création de la brasserie",
+          "constraints": ["DEFAULT CURRENT_TIMESTAMP"]
+        }
+      ]
+    },
+    "Reviews": {
+      "description": "Les utilisateurs peuvent laisser des notes et commentaires sur les bières.",
+      "attributes": [
+        {
+          "name": "review_id",
+          "type": "INT",
+          "description": "Identifiant unique de l'avis",
+          "constraints": ["PRIMARY KEY", "SERIAL"]
+        },
+        {
+          "name": "user_id",
+          "type": "INT",
+          "description": "Identifiant de l'utilisateur qui a laissé l'avis",
+          "constraints": ["FOREIGN KEY REFERENCES users(user_id)"]
+        },
+        {
+          "name": "beer_id",
+          "type": "INT",
+          "description": "Identifiant de la bière notée",
+          "constraints": ["FOREIGN KEY REFERENCES beers(beer_id)"]
+        },
+        {
+          "name": "rating",
+          "type": "INT",
+          "description": "Note donnée à la bière (1-5)",
+          "constraints": ["CHECK (rating BETWEEN 1 AND 5)"]
+        }
+      ]
+    },
+    "Favorites": {
+      "description": "Permet aux utilisateurs de sauvegarder leurs bières préférées.",
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "INT",
+          "description": "Identifiant de l'utilisateur",
+          "constraints": ["FOREIGN KEY REFERENCES users(user_id)"]
+        },
+        {
+          "name": "beer_id",
+          "type": "INT",
+          "description": "Identifiant de la bière ajoutée aux favoris",
+          "constraints": ["FOREIGN KEY REFERENCES beers(beer_id)"]
+        }
+      ]
+    },
+    "Pictures": {
+      "description": "Les utilisateurs peuvent voir des photos des bières.",
+      "attributes": [
+        {
+          "name": "picture_id",
+          "type": "INT",
+          "description": "Identifiant unique de la photo",
+          "constraints": ["PRIMARY KEY", "SERIAL"]
+        },
+        {
+          "name": "beer_id",
+          "type": "INT",
+          "description": "Identifiant de la bière associée à la photo",
+          "constraints": ["FOREIGN KEY REFERENCES beers(beer_id)"]
+        },
+        {
+          "name": "url",
+          "type": "TEXT",
+          "description": "URL de la photo",
+          "constraints": ["NOT NULL", "UNIQUE"]
+        }
+      ]
+    },
+    "Ingredients": {
+      "description": "Détaille les ingrédients des bières.",
+      "attributes": [
+        {
+          "name": "ingredient_id",
+          "type": "INT",
+          "description": "Identifiant unique de l'ingrédient",
+          "constraints": ["PRIMARY KEY"]
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)",
+          "description": "Nom de l'ingrédient",
+          "constraints": ["NOT NULL", "UNIQUE"]
+        }
+      ]
+    }
+  }
+  

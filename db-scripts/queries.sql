@@ -56,12 +56,43 @@ where favorites.user_id is null;
 
 --Trouver les bières favorites communes entre deux utilisateurs.
 SELECT 
-    beers.name AS "Beer Name",
-    STRING_AGG(users.first_name, ', ') AS "Users"
+    beers.name AS "Beer Name", STRING_AGG(users.first_name, ', ') AS "Users"
 FROM Beers
 JOIN Favorites ON Beers.beer_id = Favorites.beer_id
 JOIN Users ON Favorites.user_id = Users.user_id
 GROUP BY beers.name
 HAVING COUNT(users.user_id) > 1;
 
+--Afficher les brasseries dont les bières ont une moyenne de notes supérieure à une certaine valeur.
+SELECT 
+    Breweries.name AS "Brewery Name",
+    ROUND(AVG(Reviews.rating), 2) AS "Average Rating" -- Limite à 2 décimales
+FROM 
+    Breweries
+JOIN 
+    Beers ON Breweries.brewery_id = Beers.brewery_id
+JOIN 
+    Reviews ON Beers.beer_id = Reviews.beer_id
+GROUP BY 
+    Breweries.name
+HAVING 
+    AVG(Reviews.rating) > 2.5
+ORDER BY 
+    "Average Rating" DESC;
+
+
+--Mettre à jour les informations d'une brasserie.
+UPDATE breweries
+SET name = 'Brasserie d''Achouffe'
+WHERE brewery_id = 1;
+
+
+--Supprimer les photos d'une bière en particulier.
+--dabord, vérifier quelles photos sont associées à la bière
+SELECT * FROM pictures
+WHERE beer_id = 33;
+
+--ensuite, supprimer les photos
+DELETE FROM pictures
+WHERE beer_id = 33;
 

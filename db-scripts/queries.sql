@@ -96,3 +96,19 @@ WHERE beer_id = 33;
 DELETE FROM pictures
 WHERE beer_id = 33;
 
+--Écrire un déclencheur (trigger) pour vérifier que l'ABV (taux d'alcool) est compris entre 0 et 20 avant l'ajout de chaque bière.
+CREATE OR REPLACE FUNCTION check_abv()
+RETURNS TRIGGER AS $$ -- Indique que cette fonction est un trigger
+BEGIN
+    IF NEW.abv < 0 OR NEW.abv > 20 THEN
+        RAISE EXCEPTION 'ABV must be between 0 and 20';
+    END IF;
+    RETURN NEW; -- On retourne la nouvelle ligne, elle est valide
+END;
+$$ LANGUAGE plpgsql; -- Utilisation du langage PL/pgSQL
+
+CREATE TRIGGER check_abv
+BEFORE INSERT OR UPDATE ON Beers
+FOR EACH ROW
+EXECUTE FUNCTION check_abv();
+

@@ -1,0 +1,15 @@
+# Use postgres/example user/password credentials
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: db2
+      POSTGRES_USER: senga
+      POSTGRES_PASSWORD: megapassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - Postgres:/var/lib/postgresql/data
+
+volumes:
+  Postgres:

@@ -1,0 +1,26 @@
+regles de gestion (methode merise) :
+
+- RG1 : un utilisateur doit se connecter avec une adresse mail et un mot de passe
+- RG2 : un utilisateur doit avoir un nom, un prenom, une adresse mail et un mot de passe
+- RG3 : un utilisateur ne peut pas avoir le même mail qu'un autre utilisateur
+
+-RG4 : une bière doit avoir un nom, une description, une couleur, une amertume, une note, un prix et une image
+-RG5 : une bière ne peut pas avoir le même nom qu'une autre bière
+-RG6 : une bière doit avoir une couleur comprise entre 1 et 10
+-RG7 : une bière doit avoir une amertume comprise entre 1 et 10
+-RG8 : une bière doit avoir une note comprise entre 1 et 10
+-RG9 : une bière doit avoir un prix supérieur à 0
+-RG10 : une bière doit être associée à une seule brasserie
+-RG11 : une brasserie peut avoir plusieurs bières
+-RG12 : un uutilisateur peut avoir plusieurs bières favorites
+-RG13 : un utilisateur peut donner un avis sur une bière une seule fois
+-RG14 : une bière peut avoir plusieurs avis
+-RG15 : une bière est associée à une seule catégorie
+-RG16 : une catégorie peut avoir plusieurs bières
+
+
+
+
+https://app.diagrams.net/#G1AgjOP28sTnPK42gn8F3R6j4RjovGkKlY#%7B%22pageId%22%3A%22jrCsHKovWt978nCj-sjK%22%7D
+
+https://docs.google.com/spreadsheets/d/189qi86tf3p2CJZD2001yDTn5xsHMRP3Gylr7p7nLCAk/edit?gid=0#gid=0

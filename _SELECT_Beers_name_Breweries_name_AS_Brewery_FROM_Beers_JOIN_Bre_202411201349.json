@@ -1,0 +1,11 @@
+{
+"SELECT Beers.name, Breweries.name AS \"Brewery\"\r\nFROM Beers\r\nJOIN Breweries ON Beers.brewery_id = Breweries.brewery_id\r\nWHERE Breweries.name = 'La Chouffe'": [
+	{
+		"name" : "La Chouffe Blonde",
+		"Brewery" : "La Chouffe"
+	},
+	{
+		"name" : "La Chouffe Houblon",
+		"Brewery" : "La Chouffe"
+	}
+]}

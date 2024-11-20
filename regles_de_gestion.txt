@@ -24,3 +24,5 @@ regles de gestion (methode merise) :
 https://app.diagrams.net/#G1AgjOP28sTnPK42gn8F3R6j4RjovGkKlY#%7B%22pageId%22%3A%22jrCsHKovWt978nCj-sjK%22%7D
 
 https://docs.google.com/spreadsheets/d/189qi86tf3p2CJZD2001yDTn5xsHMRP3Gylr7p7nLCAk/edit?gid=0#gid=0
+
+https://github.com/2024-devops-alt-dist/zythologue/tree/main

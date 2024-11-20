@@ -161,6 +161,17 @@ VALUES
     ('Leffe Blond', 'A smooth and subtle Belgian blonde ale.', 6.6, 9, 10); 
 
 
+INSERT INTO Beers (name, description, abv, category_id, brewery_id)
+VALUES 
+('La Chouffe Houblon', 'A strong IPA with a Chouffe twist.', 9.0, 6, 1),
+('Guinness Foreign Extra Stout', 'A bolder, richer version of the classic stout.', 7.5, 3, 2),
+('Heineken Silver', 'A lighter, smoother Heineken.', 4.0, 1, 3),
+('Bud Light', 'A light lager with a crisp taste.', 4.2, 1, 4),
+('Carlsberg Elephant', 'A strong and full-bodied lager.', 7.2, 13, 5),
+('Pilsner Urquell Dark', 'A dark version of the classic pilsner.', 4.9, 5, 6),
+('Chimay Red', 'A fruity and copper-colored Trappist beer.', 7.0, 10, 8),
+('Duvel Tripel Hop', 'A hoppier version of the classic Duvel.', 9.5, 14, 9);
+
 
 --  "La Chouffe Blonde"
 INSERT INTO Beer_Ingredients (beer_id, ingredient_id, percentage)
@@ -233,16 +244,19 @@ VALUES
 
 INSERT INTO Favorites (user_id, beer_id)
 VALUES 
-(2, 18),
-(4, 14),
-(5, 13),
-(6, 11),
-(7, 12),
-(8, 11),
-(9, 17),
-(10, 20),
-(11, 19),
-(12, 11);
+(1, 21),
+(2, 21),
+(2, 30),
+(3, 20),
+(4, 24),
+(5, 30),
+(6, 21),
+(7, 22),
+(8, 21),
+(9, 27),
+(10, 30),
+(10, 29),
+(10, 21);
 
 
 

@@ -5,6 +5,15 @@ CREATE TABLE Breweries (
     created_at DATE DEFAULT CURRENT_DATE
 );
 
+CREATE TABLE Users (
+    user_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE Categories (
     category_id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
@@ -25,19 +34,6 @@ CREATE TABLE Beers (
     CONSTRAINT fk_brewery_id FOREIGN KEY (brewery_id) REFERENCES Breweries(brewery_id),
     CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 );
-
--- AJOUTER UN NOUVEL ATTRIBUT POUR LA TABLE BEERS : RATING (INT)
-ALTER TABLE Beers
-ADD COLUMN rating INT CHECK (rating >= 0 AND rating <= 5);
-
--- SUPPIMER UN NOUVEL ATTRIBUT POUR LA TABLE BEERS : RATING (INT)
-ALTER TABLE Beers
-DROP COLUMN rating;
-
--- -- AJOUTER DES RATINGS POUR LES BIÈRES EXISTANTES
--- UPDATE Beers
--- SET rating = 5
--- WHERE beer_id = 21;
 
 CREATE TABLE Beer_Ingredients (
     beer_id INT NOT NULL,
@@ -67,11 +63,10 @@ CREATE TABLE Reviews (
 );
 
 CREATE TABLE Pictures (
-    picture_id SERIAL PRIMARY KEY,         
-    beer_id INT NOT NULL,                  
-    user_id INT NOT NULL,                
-    url VARCHAR(255) NOT NULL,            
-    CONSTRAINT fk_beer_id FOREIGN KEY (beer_id) REFERENCES Beers(beer_id),  
-    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES Users(user_id) 
+    picture_id SERIAL PRIMARY KEY,
+    beer_id INT NOT NULL,
+    user_id INT NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    CONSTRAINT fk_beer_id FOREIGN KEY (beer_id) REFERENCES Beers(beer_id),
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
-
